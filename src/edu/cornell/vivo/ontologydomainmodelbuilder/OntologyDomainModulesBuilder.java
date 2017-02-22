@@ -33,6 +33,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.opencsv.CSVReader;
 
 import edu.cornell.vivo.configuration.Configuration;
+import edu.cornell.vivo.entrypoint.VivoOntologyModularizerEntryPoint;
 
 public class OntologyDomainModulesBuilder {
 
@@ -71,6 +72,7 @@ public class OntologyDomainModulesBuilder {
 	public static void main(String[] args) {
 		OntologyDomainModulesBuilder obj = new OntologyDomainModulesBuilder();
 		try {
+			VivoOntologyModularizerEntryPoint.init("resources/setup.properties");
 			obj.runProcess();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -168,6 +170,8 @@ public class OntologyDomainModulesBuilder {
 	private void processNTFile(File file) {
 		Set<String> depenOnt = new HashSet<String>();
 		String fileName = file.getName();
+		if(fileName.startsWith(".")) return;
+		
 		DomainEntry entry = new DomainEntry();
 		setDesciptionData(entry, fileName);
 
