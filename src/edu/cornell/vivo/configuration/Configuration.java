@@ -11,7 +11,7 @@ public class Configuration {
 	
 	public static String ONTOLOGY_FILENAME = "vivo-isf-public-1.6-fromImport.owl";
 	public static String DOMAIN_MODEL_DESCRIPTION_FILENAME = "DomainModelDescription.csv";
-	public static String NT_FILES_FOLDERNAME = "ntFiles";
+	public static String NT_FILES_FOLDERNAME = "modelFiles";
 	
 	public static String LODE_FILE = "lode.xml";
 	public static String ONTOLOGY_VER_CSV_FILE = "ontologyversions.csv";
