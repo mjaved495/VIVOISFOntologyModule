@@ -37,6 +37,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.opencsv.CSVReader;
 
 import edu.cornell.vivo.configuration.Configuration;
+import edu.cornell.vivo.entrypoint.VivoOntologyModularizerEntryPoint;
 
 public class OwlOntologyModelsBuilder {
 
@@ -81,6 +82,8 @@ public class OwlOntologyModelsBuilder {
 	public static void main(String args[]){
 		OwlOntologyModelsBuilder obj = new OwlOntologyModelsBuilder();
 		try {
+			String propFilePath = "resources/setup.properties";
+			VivoOntologyModularizerEntryPoint.init(propFilePath);
 			obj.runProcess();
 		} catch (OWLOntologyCreationException | ParserConfigurationException | SAXException | IOException e) {
 			e.printStackTrace();
