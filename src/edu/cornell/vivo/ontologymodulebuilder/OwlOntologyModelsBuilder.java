@@ -211,13 +211,10 @@ public class OwlOntologyModelsBuilder {
 		}
 
 		for(OWLClass cls : cList){
-			String label = getRDFLabel(cls.getIRI());
-			if(label == null || label.length() == 0){
-				label = getIRIFragment(cls.getIRI());
-			}
+			String localname = getIRIFragment(cls.getIRI());
 			String uri = cls.getIRI().toString();
 			String lodeLink = getLODELink(cls.getIRI());
-			Entity e = new Entity(label, uri, lodeLink);
+			Entity e = new Entity(localname, uri, lodeLink);
 			ont.addClass(e);
 		}
 		if(ont.getClasses()!= null && ont.getClasses().size() > 0){
@@ -229,13 +226,10 @@ public class OwlOntologyModelsBuilder {
 		}
 
 		for(OWLObjectProperty objProp : oList){
-			String label = getRDFLabel(objProp.getIRI());
-			if(label == null || label.length() == 0){
-				label = getIRIFragment(objProp.getIRI());
-			}
+			String localname = getIRIFragment(objProp.getIRI());
 			String uri = objProp.getIRI().toString();
 			String lodeLink = getLODELink(objProp.getIRI());
-			Entity e = new Entity(label, uri, lodeLink);
+			Entity e = new Entity(localname, uri, lodeLink);
 			ont.addObjProperty(e);
 		}
 		if(ont.getObjProperties()!= null && ont.getObjProperties().size() > 0){
@@ -247,13 +241,10 @@ public class OwlOntologyModelsBuilder {
 		}
 
 		for(OWLDataProperty dataProp : dList){
-			String label = getRDFLabel(dataProp.getIRI());
-			if(label == null || label.length() == 0){
-				label = getIRIFragment(dataProp.getIRI());
-			}
+			String localname = getIRIFragment(dataProp.getIRI());
 			String uri = dataProp.getIRI().toString();
 			String lodeLink = getLODELink(dataProp.getIRI());
-			Entity e = new Entity(label, uri, lodeLink);
+			Entity e = new Entity(localname, uri, lodeLink);
 			ont.addDataProperty(e);
 		}
 		if(ont.getDataProperties()!= null && ont.getDataProperties().size() > 0){
@@ -265,13 +256,10 @@ public class OwlOntologyModelsBuilder {
 		}
 
 		for(OWLAnnotationProperty aProp : aList){
-			String label = getRDFLabel(aProp.getIRI());
-			if(label == null || label.length() == 0){
-				label = getIRIFragment(aProp.getIRI());
-			}
+			String localname = getIRIFragment(aProp.getIRI());
 			String uri = aProp.getIRI().toString();
 			String lodeLink = getLODELink(aProp.getIRI());
-			Entity e = new Entity(label, uri, lodeLink);
+			Entity e = new Entity(localname, uri, lodeLink);
 			ont.addAnnotationProperty(e);
 		}
 		if(ont.getAnnotProperties()!= null && ont.getAnnotProperties().size() > 0){
@@ -283,13 +271,10 @@ public class OwlOntologyModelsBuilder {
 		}
 
 		for(OWLNamedIndividual ind : iList){
-			String label = getRDFLabel(ind.getIRI());
-			if(label == null || label.length() == 0){
-				label = getIRIFragment(ind.getIRI());
-			}
+			String localname = getIRIFragment(ind.getIRI());
 			String uri = ind.getIRI().toString();
 			String lodeLink = getLODELink(ind.getIRI());
-			Entity e = new Entity(label, uri, lodeLink);
+			Entity e = new Entity(localname, uri, lodeLink);
 			ont.addIndividual(e);
 		}
 		if(ont.getIndividuals()!= null && ont.getIndividuals().size() > 0){
@@ -336,7 +321,7 @@ public class OwlOntologyModelsBuilder {
 
 		//TODO Making spacing between camel case capitalized fragments
 
-		return fragment.toUpperCase();
+		return fragment;
 	}
 
 	private void createClassMap(String namespace, OWLOntology ontology) {

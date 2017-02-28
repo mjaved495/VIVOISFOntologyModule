@@ -9,7 +9,7 @@ public class Configuration {
 	
 	
 	
-	public static String ONTOLOGY_FILENAME = "vivo-isf-public-1.6-fromImport.owl";
+	public static String ONTOLOGY_FILENAME = "vivo-2017-02-27.owl";
 	public static String DOMAIN_MODEL_DESCRIPTION_FILENAME = "DomainModelDescription.csv";
 	public static String NT_FILES_FOLDERNAME = "modelFiles";
 	
