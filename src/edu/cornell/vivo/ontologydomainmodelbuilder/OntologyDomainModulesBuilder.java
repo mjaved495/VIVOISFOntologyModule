@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Logger;
 
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
@@ -37,6 +38,7 @@ import edu.cornell.vivo.entrypoint.VivoOntologyModularizerEntryPoint;
 
 public class OntologyDomainModulesBuilder {
 
+	private static final Logger LOGGER = 	Logger.getLogger(OntologyDomainModulesBuilder.class.getName());
 	private static final String BIBO = 		"http://purl.org/ontology/bibo/";
 	private static final String C4O =  		"http://purl.org/spar/c4o/";
 	private static final String CITO = 		"http://purl.org/spar/cito/";
@@ -253,9 +255,12 @@ public class OntologyDomainModulesBuilder {
 	private void setDesciptionData(DomainEntry entry, String fileName) {
 		String modelName = getModelName(fileName);
 		DomainEntry ent = descripMap.get(modelName.toLowerCase());
-		entry.setModelTitle(ent.getModelTitle());
-		entry.setModelDescription(ent.getModelDescription());
-		entry.setImage(ent.getImage());
+		if(ent != null){
+			entry.setModelTitle(ent.getModelTitle());
+			entry.setModelDescription(ent.getModelDescription());
+			entry.setImage(ent.getImage());
+		}
+	LOGGER.warning("No description data found for "+modelName+" in CSV file.");
 	}
 
 	private String getModelName(String fileName) {
